@@ -1,6 +1,3 @@
-
-## Operational Semantics Code 
-## Dev: Mikhail Rene Shaw - 1406944
 '''
 def getBrac(arr):
     bracArr = []
@@ -62,7 +59,10 @@ def getProd(arr, text, oldAns):
                 return -1
             
             if oldAns != 'null':
-                text += "<X * Y> ->"+oldAns+"  <Z , θ> ->"+arr[x - 1]+"\n" 
+                if oldAns != arr[x - 1]:
+                    text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x - 1]+"\n" 
+                else:
+                    text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x + 1]+"\n" 
                 
             a = arr[x - 1]
             b = arr[x + 1] 
@@ -95,7 +95,10 @@ def getQuot(arr, text, oldAns):
                 return -1
             
             if oldAns != 'null':
-                text += "<X / Y θ> ->"+oldAns+"  <Z , θ> ->"+arr[x - 1]+"\n" 
+                if oldAns != arr[x - 1]:
+                    text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x - 1]+"\n" 
+                else:
+                    text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x + 1]+"\n" 
                 
             a = arr[x - 1]
             b = arr[x + 1] 
@@ -119,7 +122,7 @@ def getQuot(arr, text, oldAns):
     }
     return ans
 
-def getSum(arr, text, oldAns):
+def getSumOrDiff(arr, text, oldAns):
     #text = ""
     for x in range(0, len(arr)):
         if arr[x] == '+' or arr[x] == "+":
@@ -127,7 +130,10 @@ def getSum(arr, text, oldAns):
                 return -1
             
             if oldAns != 'null':
-                text += "<X + Y> ->"+oldAns+"  <Z , θ> ->"+arr[x - 1]+"\n" 
+                if oldAns != arr[x - 1]:
+                    text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x - 1]+"\n" 
+                else:
+                    text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x + 1]+"\n" 
                 
             a = arr[x - 1]
             b = arr[x + 1] 
@@ -136,7 +142,23 @@ def getSum(arr, text, oldAns):
             arr[x] = "_"
             text += "<X , θ> ->"+a+"  <Y , θ> ->"+b+"\n" 
             text += "<X + Y , θ -> "+a+" + "+b+"  <"+a+" + "+b+", θ> ↓↓ "+str(arr[x + 1])+"\n"
-    
+        elif arr[x] == '-' or arr[x] == "-":
+            if x < 1 or x >= len(arr) - 1:
+                return -1
+            
+            if oldAns != 'null':
+                if oldAns != arr[x - 1]:
+                    text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x - 1]+"\n" 
+                else:
+                    text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x + 1]+"\n" 
+                
+            a = arr[x - 1]
+            b = arr[x + 1] 
+            oldAns = arr[x + 1] = str(int(arr[x - 1]) - int(arr[x + 1]))
+            arr[x - 1] = "_"
+            arr[x] = "_"
+            text += "<X , θ> ->"+a+"  <Y , θ> ->"+b+"\n" 
+            text += "<X - Y , θ -> "+a+" - "+b+"  <"+a+" - "+b+", θ> ↓↓ "+str(arr[x + 1])+"\n"
     newArr = []
     y = 0
     for x in range(0, len(arr)):
@@ -151,6 +173,7 @@ def getSum(arr, text, oldAns):
     }
     return ans
 
+'''
 def getDiff(arr, text, oldAns):
     #text = ""
     for x in range(0, len(arr)):
@@ -159,7 +182,10 @@ def getDiff(arr, text, oldAns):
                 return -1
             
             if oldAns != 'null':
-                text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x - 1]+"\n" 
+                if oldAns != arr[x - 1]:
+                    text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x - 1]+"\n" 
+                else:
+                    text += "<X - Y> ->"+oldAns+"  <Z , θ> ->"+arr[x + 1]+"\n" 
                 
             a = arr[x - 1]
             b = arr[x + 1] 
@@ -182,7 +208,7 @@ def getDiff(arr, text, oldAns):
         'old': oldAns
     }
     return ans
-
+'''
 
 def getPost(text):
     arr = text.split()
@@ -192,12 +218,10 @@ def getPost(text):
     print("New Array(Prod): ", ans)
     ans = getQuot(ans["array"], ans["text"], ans["old"])
     print("New Array(Quot): ", ans)
-    ans = getSum(ans["array"], ans["text"], ans["old"])
+    ans = getSumOrDiff(ans["array"], ans["text"], ans["old"])
     print("New Array(Sum): ", ans)
-    ans = getDiff(ans["array"], ans["text"], ans["old"])
-    print("New Array(Diff): ", ans)
+    #ans = getDiff(ans["array"], ans["text"], ans["old"])
+    #print("New Array(Diff): ", ans)
     
 
     return ans["text"]
-
-## Operational Semantics Code
