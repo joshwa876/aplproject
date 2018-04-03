@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import oSemantics
+import oSemantics, dSemantics
 
 apl = Flask(__name__)
 
@@ -28,9 +28,17 @@ def axsemantic():
     return render_template("ax_semantic.html")
 
 
-@apl.route('/desemantic')
+@apl.route('/desemantic', methods=["POST","GET"])
 def desemantic():
-    return render_template("de_semantic.html")
+    if request.method == 'POST':
+            oldData =  request.form['data']
+            Data = dSemantics.getPost(oldData)
+            #Data = makeOpt(oldData)            
+            print("\nData: \n%s", Data)
+            return render_template(
+                'de_semantic.html', data=Data, eq=oldData)
+
+    return render_template("de_semantic.html", data=False)
 
 
 @apl.route('/lambda_calc')

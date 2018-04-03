@@ -267,8 +267,8 @@ def getPost(text):
     
     # ans = getProd(arr, "", 'null')
     # print("New Array(Prod): ", ans)
-    ans = getBrac(arr, "", 'null')
-    ans = getProd(ans["array"], ans["text"], ans["old"])
+    #ans = getBrac(arr, "", 'null')
+    ans = getProd(arr, "", 'null')
     print("New Array(Prod): ", ans)
     ans = getQuot(ans["array"], ans["text"], ans["old"])
     print("New Array(Quot): ", ans)
