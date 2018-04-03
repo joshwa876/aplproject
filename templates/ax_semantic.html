@@ -1,15 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <title>Ax</title>
+	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+</style>
+	
+	
 </head>
 {% extends "root.html" %}
 {% block content %}
 <body>
-    <div class="platform">
-        <h1>This is the platform</h1>
+
+
+
+
+<!-- Trigger/Open The Modal -->
+<br/><br/>
+<p>1.	a = b + 1 and Postcondition: {a > 1}
+
+</p>
+<button id="myBtn">Calculate</button>
+
+
+<br/><br/>
+<p>2.	x:=x+1 and Postcondition: (x > 0)
+
+</p>
+<button id="myBtn2">Calculate</button>
+
+
+<br/><br/>
+<p>3.	a:=a+1; b:=b-1 and Postcondition: a×b = 0
+
+</p>
+<button id="myBtn3">Calculate</button>
+
+
+
+<br/><br/>
+<p> 4.	{ P } x := 3 Postcondition: { x+y > 0 }
+
+</p>
+<button id="myBtn4">Calculate</button>
+
+
+<br/><br/>
+<p> 5.	(S>2)s=3*x+2
+
+</p>
+<button id="myBtn5">Calculate</button>
+
+
+
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 align="center">1. a = b + 1 Postcondition: {a > 1}</h2>
     </div>
+    <div class="modal-body">
+     
+<p>Weakest precondition: {b > 0}</p>
+<p></p>
+      
+    </div>
+    <div class="modal-footer">
+      <h6 align="right" >Click anywhere outside this dialog to close.</h6>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+<div id="myModal2" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 align="center"> 2. x:=x+1 Postcondition: (x > 0)</h2>
+    </div>
+    <div class="modal-body">
+      <p>
+	  
+One valid precondition is (x > 0),</p>
+ <p>{x > 0} x:=x+1 {x > 0}</p>
+ <p>Another valid precondition is (x > −1), so:</p>
+ <p>{x > −1} x:=x+1 {x > 0}</p>
+ <p>(x > −1) is weaker than (x > 0) (. . . because (x > 0)⇒(x > −1))</p>
+ <p>In fact, (x > −1) is the weakest precondition:</p>
+
+</p>
+     
+    </div>
+    <div class="modal-footer">
+    <h6 align="right">Click anywhere outside this dialog to close.</h6>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+<div id="myModal3" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 align="center"> 3. a:=a+1; b:=b-1 Postcondition: a×b = 0</h2>
+    </div>
+    <div class="modal-body">
+      <p>A very strong precondition is (a = −1)∧(b = 1):</p>
+ <p>A weaker precondition is a = −1.</p>
+ <p>The weakest precondition is (a = −1)∨(b = 1)</p>
+ <p>wp(a:=a+1; b:=b-1, a×b = 0) ≡ (a = −1)∨(b = 1)</p>
+
+	  
+	  
+	  
+
+     
+    </div>
+    <div class="modal-footer">
+     <h6 align="right">Click anywhere outside this dialog to close.</h6>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div id="myModal4" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 align="center">4. { P } x := 3 { x+y > 0 }</h2>
+    </div>
+    <div class="modal-body">
+      <p>What is the weakest precondition P?</p>
+<p>Assignment rule</p>
+<p>wp(x := E, P) = [E/x] P</p> <p>{ [E/x] P } x := E { P }</p>
+<p>[3 / x] (x + y > 0)</p>
+<p>= (3) + y > 0</p>
+<p>= y > -3</p>
+
+     
+    </div>
+    <div class="modal-footer">
+      <h6 align="right">Click anywhere outside this dialog to close.</h6>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div id="myModal5" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 align="center">5.	(S>2)s=3*z+2</h2>
+    </div>
+    <div class="modal-body">
+<p>s>2</P>
+<p>3*z+2>2</P>
+<p>3*z>1    </P>
+<p>z>1</P>
+<p>weakest precondition: z>0</P>
+    </div>
+    <div class="modal-footer">
+      <h6 align="right">Click anywhere outside this dialog to close.</h6>
+    </div>
+  </div>
+
+</div>
+
+
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+var modal2 = document.getElementById('myModal2');
+var modal3 = document.getElementById('myModal3');
+var modal4 = document.getElementById('myModal4');
+var modal5 = document.getElementById('myModal5');
+
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+var btn2 = document.getElementById("myBtn2");
+var btn3 = document.getElementById("myBtn3");
+var btn4 = document.getElementById("myBtn4");
+var btn5 = document.getElementById("myBtn5");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+
+
+btn2.onclick = function() {
+    modal2.style.display = "block";
+}
+
+
+btn3.onclick = function() {
+    modal3.style.display = "block";
+}
+
+btn4.onclick = function() {
+    modal4.style.display = "block";
+}
+
+btn5.onclick = function() {
+    modal5.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+	
+	
+	
+
+	 else if (event.target == modal2) {
+        modal2.style.display = "none";
+    }
+	
+	
+	
+	 else if (event.target == modal3) {
+        modal3.style.display = "none";
+    }
+	
+	
+	
+	
+	
+	else if (event.target == modal4) {
+        modal4.style.display = "none";
+    }
+	
+	
+	else if (event.target == modal5) {
+        modal5.style.display = "none";
+    }
+	
+	
+}
+	
+
+</script>
 </body>
 {% endblock %}
+
+
 </html>

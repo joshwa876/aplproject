@@ -3,12 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <title>LAMBDA CALCULUS</title>
+	
 </head>
 {% extends "root.html" %}
 {% block content %}
 <body>
 
 
+
+
+
+
+<br><br><br>
+Enter Simple Expression: <input type="text" name="enter" class="enter" value="" id="expr"/> 
+
+
+
+
+<input type="button" value="Convert" id="btn" onclick="myFunction()"/>
+
+
+
+<script type="text/javascript">
+function myFunction() {
+    var text = document.getElementById('expr').value;
+	
+var m = document.getElementById('expr').value;
+var x = eval(m)+ "<br>";
+	
+	
+document.getElementById("demo").innerHTML = "";
+document.getElementById("demo2").innerHTML = "";
+document.getElementById("demo3").innerHTML = "";
+document.getElementById("demo4").innerHTML = "";
+document.getElementById("demo5").innerHTML = "";
+
+
+
+	 var str = document.getElementById('expr').value;
+    var n = str.includes("+");
+    var op1;
+    if (n==true) {
+        op1 = "Addition:   λm.λn.λf.λx m f(n f x) ";
+		 document.getElementById("demo").innerHTML = op1;
+		
+    } else {
+        
+    }
+   
+
+
+	
+	 var n1 = str.includes("-");
+
+    if (n1==true) {
+        op1 = "Subtraction:   λm.λn.n pred m";
+		
+		    document.getElementById("demo2").innerHTML = op1;
+    } else {
+     
+    }
+
+
+	
+	
+	 var n1 = str.includes("*");
+  
+    if (n1==true) {
+        op1 = "Multiply:   λm.λn.λf.λx.m(n f)x";
+		    document.getElementById("demo3").innerHTML = op1;
+    } else {
+    
+    }
+
+
+	
+	
+	 var n1 = str.includes("/");
+	
+    if (n1==true) {
+        op1 = "Division:  (λn.((λf.(λx.x x) (λx.f (x x))) (λc.λn.λm.λf.λx.(λd.(λn.n (λx.(λa.λb.b)) (λa.λb.a)) d ((λf.λx.x) f x) (f (c d m f x))) ((λm.λn.n (λn.λf.λx.n (λg.λh.h (g f)) (λu.x) (λu.u)) m) n m))) ((λn.λf.λx. f (n f x)) n))";
+		    document.getElementById("demo4").innerHTML = op1;
+			
+			
+			
+		
+			
+
+			
+    } else {
+        
+    }
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+var find = ["0","1","2","3","4","5","6","7","8","9"];
+var replace = ['0-λf.λx.x. ','1-λf.λx.f x ','2-λf.λx.f(f x)','3-λf.λx.f(f(f x))','4-λf.λx.f(f(f(f x)))','5-λf.λx.f(f(f(f(f x))))','6-λf.λx.f(f(f(f(f(f x)))))','7-λf.λx.f(f(f(f(f(f(f x))))))','8-λf.λx.f(f(f(f(f(f(f(f x)))))))','9-λf.λx.f(f(f(f(f(f(f(f(f x))))))))'];
+
+
+
+text1 = replaceStr(str, find, replace);
+
+			 document.getElementById("demo5").innerHTML = text1;
+			
+	
+	
+	
+	
+	
+	function replaceStr(str, find, replace) {
+    for (var i = 0; i < find.length; i++) {
+        str = str.replace(new RegExp(find[i], 'gi'), replace[i]);
+			str=str.replace(/[-&\/\\#,+$~%.'":*?<>]/g,'.');
+    }
+
+    return str;
+}
+
+
+var find = ["1","2","3","4","5","6","7","8","9",'0','10'];
+var replace = ['λa','λb','λc','λd','λe','λf','λg','λh','λi','λj','λk'];
+
+
+
+text = replaceStr(text, find, replace);
+
+
+
+
+	
+	
+	
+
+console.log(text);
+	
+
+	 document.getElementById("myText").innerHTML = text;
+	 
+	 document.getElementById("myText2").innerHTML = x;
+}
+</script>
+
+<h4>The Expression Converted to Lambda Calculus:  <span id="myText"></span></h4>
+
+<h4>Natural Numbers Converted to Lambda(0-9): </h4>
+<p id="demo5"></p>
+
+
+<h4> Lambda Formula: </h4>
+<p id="demo"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+
+
+
+<h4>Result:  <span id="myText2"></span></h4>
+
+
+
+
+<h6 align="center">Lambda Numberal Conversions only valid with numbers from the range 0-9 <span id="myText2"></span></h6>
+
+
+
+
+</script>
 </body>
 {% endblock %}
 </html>
