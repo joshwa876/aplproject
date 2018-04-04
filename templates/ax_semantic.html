@@ -55,7 +55,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color:  rgba(0, 136, 82, 0.36); /*#5cb85c;*/
     color: white;
 }
 
@@ -63,7 +63,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: rgba(0, 136, 82, 0.36); /*#5cb85c;*/
     color: white;
 }
 </style>
@@ -75,43 +75,47 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <body>
 
 
-
+<div class="platform">
+        <br>
+        <h2>Axiomatic Semantics</h2>
+        <br/>
+        <p>1.	a = b + 1 and Postcondition: {a > 1}
+        
+        </p>
+        <button id="myBtn">Calculate</button>
+        
+        
+        <br/>
+        <p>2.	x:=x+1 and Postcondition: (x > 0)
+        
+        </p>
+        <button id="myBtn2">Calculate</button>
+        
+        
+        <br/>
+        <p>3.	a:=a+1; b:=b-1 and Postcondition: a×b = 0
+        
+        </p>
+        <button id="myBtn3">Calculate</button>
+        
+        
+        
+        <br/>
+        <p> 4.	{ P } x := 3 Postcondition: { x+y > 0 }
+        
+        </p>
+        <button id="myBtn4">Calculate</button>
+        
+        
+        <br/>
+        <p> 5.	(S>2)s=3*x+2
+        
+        </p>
+        <button id="myBtn5">Calculate</button>
+</div>
 
 <!-- Trigger/Open The Modal -->
-<br/><br/>
-<p>1.	a = b + 1 and Postcondition: {a > 1}
 
-</p>
-<button id="myBtn">Calculate</button>
-
-
-<br/><br/>
-<p>2.	x:=x+1 and Postcondition: (x > 0)
-
-</p>
-<button id="myBtn2">Calculate</button>
-
-
-<br/><br/>
-<p>3.	a:=a+1; b:=b-1 and Postcondition: a×b = 0
-
-</p>
-<button id="myBtn3">Calculate</button>
-
-
-
-<br/><br/>
-<p> 4.	{ P } x := 3 Postcondition: { x+y > 0 }
-
-</p>
-<button id="myBtn4">Calculate</button>
-
-
-<br/><br/>
-<p> 5.	(S>2)s=3*x+2
-
-</p>
-<button id="myBtn5">Calculate</button>
 
 
 

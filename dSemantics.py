@@ -193,12 +193,12 @@ def getQuot(arr, temp, text, oldAns):
             
             text += " ↓↓ " + textArr[x - 1] + " " + textArr[x] + " " + textArr[x + 1]
     
-    newArr = []
-    y = 0
-    for x in range(0, len(arr)):
-        if arr[x] != "_":
-            newArr.append(arr[x])
-            y += 1
+    # newArr = []
+    # y = 0
+    # for x in range(0, len(arr)):
+    #     if arr[x] != "_":
+    #         newArr.append(arr[x])
+    #         y += 1
 
     ans = {
         'array': newArr,

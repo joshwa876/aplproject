@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import oSemantics, dSemantics
+import oSemantics, dSemantics, lamCalculus
 
 apl = Flask(__name__)
 
@@ -41,9 +41,15 @@ def desemantic():
     return render_template("de_semantic.html", data=False)
 
 
-@apl.route('/lambda_calc')
+@apl.route('/lambda_calc', methods=["POST","GET"])
 def lambda_calc():
-    return render_template("lam_calculus.html")
+    if request.method == 'POST':
+        oldData = request.form['data']
+        Data = lamCalculus.calculate(oldData)
+        return render_template(
+            "lam_calculus.html", data=Data
+        )
+    return render_template("lam_calculus.html", data=False)
 
 
 @apl.route('/about')
